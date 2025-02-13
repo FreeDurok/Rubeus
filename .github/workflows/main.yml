@@ -32,7 +32,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '4.0.x'
         if: success()
       - name: Execute dotnet
         run: dotnet build -c Release
