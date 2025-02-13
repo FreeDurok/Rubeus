@@ -21,7 +21,8 @@ jobs:
         if: success()
 
       - name: Restore NuGet packages
-        run: nuget restore "**/*.sln"
+        # run: nuget restore "**/*.sln"
+        run: nuget restore .
         if: success()
 
       - name: Setup MSBuild
@@ -29,7 +30,7 @@ jobs:
         if: success()
 
       - name: Build Solution
-        run: msbuild "**/*.sln" /p:Configuration=Release /p:Platform="Any CPU"
+        run: msbuild . /p:Configuration=Release /p:Platform="Any CPU"
         if: success()
 
       - name: Upload Artifact
