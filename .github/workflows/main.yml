@@ -25,13 +25,21 @@ jobs:
         run: nuget restore .
         if: success()
 
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1
+      # - name: Setup MSBuild
+      #   uses: microsoft/setup-msbuild@v1
+      #   if: success()
+        
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.0.x'
         if: success()
+      - name: Execute dotnet
+        run: dotnet build <my project>
 
-      - name: Build Solution
-        run: msbuild . /p:Configuration=Release /p:Platform="Any CPU"
-        if: success()
+      # - name: Build Solution
+      #   run: msbuild . /p:Configuration=Release /p:Platform="Any CPU"
+      #   if: success()
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
